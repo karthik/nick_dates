@@ -7,7 +7,7 @@ results <- toy %>%
                text_day  = return_days(toyas))
 
 results <- results %>%
-           mutate(guessing_date_in_text = day_in_text(article_date, text_day))
+           mutate(guessing_date_in_text = day_in_text(article_date, published_day, text_day))
 
 
 # These are the functions we use below
@@ -17,7 +17,8 @@ results <- results %>%
 
 day_from_date <- function(adate = NULL) {
   if(!is.null(adate)) {
-    weekdays(as.Date(adate,'%Y-%m-%d'))
+    day_list <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+    which(grepl(weekdays(as.Date(adate,'%Y-%m-%d')),day_list))
   }
 }
 
@@ -31,14 +32,12 @@ return_days <- function(text) {
  }
 }
 
-day_in_text <- function(aday, pdate) {
-  day_list <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
- a1 <- which(grepl(weekdays(as.Date(adate,'%Y-%m-%d')), day_list))
- a2 <- pdate
- date_diff <- a1 - a2
+day_in_text <- function(article_day, aday, pdate) {
+ date_diff <- aday - pdate
  if(date_diff > 0) {
-   as.Date(adate,'%Y-%m-%d') - date_diff
+   as.Date(article_day,'%Y-%m-%d') - date_diff
  } else {
-   as.Date(adate,'%Y-%m-%d') - (date_diff + 7)
+   dd <- date_diff + 7
+   as.Date(article_day,'%Y-%m-%d') - dd
  }
  }
