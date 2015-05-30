@@ -1,4 +1,4 @@
-"","id","toyas","article_date","published_day","text_day","guessing_date_in_text"
-"1",1,"people marched on Tuesday","2011-12-09","Friday",3,2011-12-06
-"2",2,"police arrested folks Monday","2011-11-08","Tuesday",2,2011-12-05
-"3",3,"mayor issued decree on Wednesday","2011-11-06","Sunday",4,2011-12-07
+"id","toyas","article_date","published_day","text_day","guessing_date_in_text"
+1,"people marched on Tuesday","2011-12-09",6,3,"2011-12-06"
+2,"police arrested folks Monday","2011-11-08",3,2,"2011-11-07"
+3,"mayor issued decree on Wednesday","2011-11-06",1,4,"2011-11-02"
