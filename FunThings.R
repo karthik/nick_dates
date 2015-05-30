@@ -1,5 +1,6 @@
 library(lubridate)
 library(dplyr)
+library(readr)
 toy <- read.csv("event_date_id_toyas.csv", stringsAsFactors = FALSE)
 results <- toy %>%
            rowwise() %>%
@@ -9,6 +10,7 @@ results <- toy %>%
 results <- results %>%
            mutate(guessing_date_in_text = day_in_text(article_date, published_day, text_day))
 
+write_csv(results, path = "results.csv")
 
 # These are the functions we use below
 
